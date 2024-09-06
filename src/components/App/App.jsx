@@ -28,10 +28,10 @@ function App() {
 
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
 
-  function handleReset(options) {
-    for (const option of options) {
-      setClicks({ ...clicks, [option]: (clicks[option] = 0) });
-    }
+  const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
+
+  function handleReset() {
+    setClicks({ ...clicks, good: 0, neutral: 0, bad: 0 });
   }
 
   return (
@@ -51,6 +51,7 @@ function App() {
           neutral={clicks.neutral}
           bad={clicks.bad}
           total={totalFeedback}
+          positive={positiveFeedback}
         />
       ) : (
         <Notification />

@@ -19,11 +19,11 @@ function Options({ options, handleClick, total, handleReset }) {
           );
         })}
       </ul>
-      {!total || (
+      {total > 0 && (
         <button
           className={css.reset}
           type="button"
-          onClick={() => handleReset(options)}
+          onClick={() => handleReset()}
         >
           Reset
         </button>
